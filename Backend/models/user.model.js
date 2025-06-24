@@ -1,12 +1,12 @@
 import mongoose from "mongoose";
 
 const userModel = new mongoose.Schema({
-    Fullname: {
+    fullname: {
         type: String,
         required: true,
         trim: true,
     },
-    Username: {
+    username: {
         type: String,
         required: true,
         unique: true
@@ -24,7 +24,7 @@ const userModel = new mongoose.Schema({
         minlength: 6,
 
     },
-    profilePhoto: {
+    profilephoto: {
         type: String,
         default: ""
 
