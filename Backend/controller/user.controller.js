@@ -41,7 +41,7 @@ const register = async (req, res) => {
         console.error(error);
         return res.status(500).json({ message: "Internal Server Error" });
     }
-    
+
 }
 
 
@@ -110,4 +110,15 @@ const logout = (req, res) => {
     }
 };
 
-export { register, login, logout }
+const getOtherUser = async (req, res) => {
+    try {
+        console.log("Enter in getOtherUser")
+        const LoggedInUserId = req.id;
+        const otherUser = await User.find({ _id: { $ne: LoggedInUserId } }).select("-password")
+        return res.status(200).json(otherUser)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export { register, login, logout, getOtherUser }
